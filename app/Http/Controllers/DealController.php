@@ -15,28 +15,8 @@ class DealController extends Controller
      */
     public function index()
     {
-        $data = [
-            "internalName" => "THEORANGEBOX",
-            "title" => "The Orange Box",
-            "metacriticLink" => "/game/pc/the-orange-box",
-            "dealID" => "TZdIf%2BhNCxhdhp2S69CaIwYmzVwD2n3OR%2BiLDGnURRo%3D",
-            "storeID" => "1",
-            "gameID" => "94081",
-            "salePrice" => "3.99",
-            "normalPrice" => "19.99",
-            "isOnSale" => "1",
-            "savings" => "80.040020",
-            "metacriticScore" => "96",
-            "steamRatingText" => "Very Positive",
-            "steamRatingPercent" => "94",
-            "steamRatingCount" => "990909",
-            "steamAppID" => "469",
-            "releaseDate" => 1191974400,
-            "lastChange" => 1625001348,
-            "dealRating" => "9.3",
-            "thumb" => "https =>//cdn.cloudflare.steamstatic.com/steam/subs/469/capsule_sm_120.jpg?t=1577609887"
-        ];
-        return $data;
+        $deals = Deal::all();
+        return $deals;
     }
 
     /**
@@ -57,7 +37,7 @@ class DealController extends Controller
      */
     public function store(StoreDealRequest $request)
     {
-        //
+        return Deal::create($request);
     }
 
     /**
@@ -68,7 +48,7 @@ class DealController extends Controller
      */
     public function show(Deal $deal)
     {
-        //
+        return $deal;
     }
 
     /**
@@ -79,7 +59,7 @@ class DealController extends Controller
      */
     public function edit(Deal $deal)
     {
-        //
+        return $deal;
     }
 
     /**
@@ -91,7 +71,7 @@ class DealController extends Controller
      */
     public function update(UpdateDealRequest $request, Deal $deal)
     {
-        //
+        $deal->update($request->toArray());
     }
 
     /**
@@ -102,6 +82,6 @@ class DealController extends Controller
      */
     public function destroy(Deal $deal)
     {
-        //
+        $deal->delete();
     }
 }
